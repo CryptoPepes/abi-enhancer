@@ -18,8 +18,15 @@ function processABI(abiPath, outputPath) {
     }
 
     var json = JSON.stringify(abi);
-    fs.writeFile(outputPath, json, 'utf8', () => console.log("completed!"));
+    fs.writeFile(outputPath, json, {encoding: 'utf8', flag: 'w'}, (err) =>{
+        if(!err) {
+            console.log("completed!") 
+        } else {
+            console.log(err);
+        }
+    });
 }
-processABI('abi/CPEP_abi.json', 'out/CPEP_abi.json');
-processABI('abi/sale_abi.json', 'out/sale_abi.json');
-processABI('abi/cozy_abi.json', 'out/cozy_abi.json');
+processABI('abi/DPEP_abi.json', './out/DPEP_abi.json');
+processABI('abi/CPEP_abi.json', './out/CPEP_abi.json');
+processABI('abi/sale_abi.json', './out/sale_abi.json');
+processABI('abi/cozy_abi.json', './out/cozy_abi.json');
